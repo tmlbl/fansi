@@ -27,3 +27,14 @@ func TestAskYesNo(t *testing.T) {
 	askYesNoTest(t, "NO\n", false)
 	askYesNoTest(t, "NONONONONONO\n", false)
 }
+
+func TestGetInput(t *testing.T) {
+	p := NewTestPrompt("hello\n")
+	str, err := p.GetInput("")
+	if err != nil {
+		t.Error(err)
+	}
+	if str != "hello" {
+		t.Errorf("Expected string hello but got %s", str)
+	}
+}
